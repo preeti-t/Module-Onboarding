@@ -3,37 +3,40 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>T‑Shirt Order Confirmation</title>
+  <title>T-Shirt Order Confirmation</title>
 </head>
 <body>
   <main>
-    <h1 id="pageTitle">Confirm identity & choose t‑shirt</h1>
-    <p>We already have your delivery and payment details. Please confirm you're the account holder, provide name & email, then choose colour and size.</p>
-    <!-- IMPORTANT: no CSS -->
-    <!-- IMPORTANT: no form action  -->
+    <h1 id="pageTitle">Confirm identity & choose t-shirt</h1>
+    <p>We already have your delivery and payment details. Please confirm you're the account holder, provide your name and email, then choose colour and size.</p>
+
     <form id="orderForm" aria-labelledby="pageTitle">
-
-      <p>
-        <label for="fullName">What is the customer's name? <span aria-hidden="true">*</span></label><br>
-        <input id="fullName" name="fullName" type="text" autocomplete="name" required
-               minlength="2" aria-required="true" placeholder="e.g. Anaïs O'Connor">
-      </p>
-
-      <p>
-        <label for="email">What is the customer's email? <span aria-hidden="true">*</span></label><br>
-        <input id="email" name="email" type="email" autocomplete="email" required
-               aria-required="true" placeholder="you@example.com">
-      </p>
-
-      <p>
-        <input id="confirmAccount" name="confirmAccount" type="checkbox" required aria-required="true">
-        <label for="confirmAccount">I confirm this is my account and I am authorised to place this order. <span aria-hidden="true">*</span></label>
-      </p>
-
+      
+      <!-- ✅ Identity section grouped with a fieldset -->
       <fieldset>
-        <legend>What colour should this t‑shirt be? <span aria-hidden="true">*</span></legend>
+        <legend>Confirm identity</legend>
+
         <p>
-          <input id="colourBlack" name="colour" type="radio" value="Black" required aria-required="true">
+          <label for="fullName">Customer Name: <span aria-hidden="true">*</span></label>
+          <input id="fullName" name="fullName" type="text" required minlength="2" placeholder="e.g. Anaïs O'Connor">
+        </p>
+
+        <p>
+          <label for="email">Email: <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" required placeholder="you@example.com">
+        </p>
+
+        <p>
+          <input id="confirmAccount" name="confirmAccount" type="checkbox" required>
+          <label for="confirmAccount">I confirm this is my account and I am authorised to place this order. <span aria-hidden="true">*</span></label>
+        </p>
+      </fieldset>
+
+      <!-- ✅ Colour selection -->
+      <fieldset>
+        <legend>What colour should this t-shirt be? <span aria-hidden="true">*</span></legend>
+        <p>
+          <input id="colourBlack" name="colour" type="radio" value="Black" required>
           <label for="colourBlack">Black</label>
         </p>
         <p>
@@ -46,24 +49,35 @@
         </p>
       </fieldset>
 
-      <p>
-        <label for="size">What size does the customer want? <span aria-hidden="true">*</span></label><br>
-        <select id="size" name="size" required aria-required="true">
-          <option value="" disabled selected aria-hidden="true">Choose a size</option>
-          <option value="XS">XS</option>
-          <option value="S">S</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-          <option value="XL">XL</option>
-          <option value="XXL">XXL</option>
-        </select>
-      </p>
+      <!-- ✅ Size selection -->
+      <fieldset>
+        <legend>What size does the customer want? <span aria-hidden="true">*</span></legend>
+        <p>
+          <label for="size" class="visually-hidden">Size</label>
+          <select id="size" name="size" required>
+            <option value="" disabled selected>Choose a size</option>
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+          </select>
+        </p>
+      </fieldset>
 
       <p>
         <button type="submit">Confirm selection</button>
       </p>
-
     </form>
   </main>
+
+  <!-- Optional: simple success alert -->
+  <script>
+    document.getElementById("orderForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      alert("✅ Thank you! Your T-shirt order has been confirmed.");
+    });
+  </script>
 </body>
 </html>
